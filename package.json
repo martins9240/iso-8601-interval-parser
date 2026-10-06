@@ -1,0 +1,17 @@
+{
+  "name": "iso-8601-interval-parser",
+  "version": "0.1.0",
+  "description": "Parses ISO 8601 interval expressions like '2024-01-01/P1M' and 'P1Y2M/2024-12-31' into structured start, end, and duration components.",
+  "type": "module",
+  "main": "src/index.js",
+  "exports": "./src/index.js",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "test": "node --test"
+  },
+  "keywords": [],
+  "license": "MIT",
+  "dependencies": {}
+}
