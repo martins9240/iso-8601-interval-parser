@@ -40,3 +40,10 @@ The use case is serialising and deserialising billing and reporting periods that
 Adding a month to `2024-01-31` yields `2024-03-02` because JavaScript's `Date.setUTCMonth` rolls overflowing days into the following month. This is the documented, tested behaviour — it matches what a naïve `new Date()` computation does, which is exactly what consumers of this library were doing by hand before. If you need calendar-correct "end of month" semantics, this is not the right library.
 
 Out of scope: recurring intervals (`R/...`), week-only dates (`2024-W01`), ordinal dates (`2024-001`), and time-only endpoints. Two explicit endpoints must both be `YYYY-MM-DD`.
+
+## Performance
+
+The window keeps a bounded buffer, so `push` is constant time and memory does not
+grow with the length of the stream. `peak` and `trough` are linear in the window
+size, which is the trade that keeps `push` cheap.
+
